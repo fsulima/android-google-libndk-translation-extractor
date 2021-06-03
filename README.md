@@ -49,32 +49,32 @@ Therefore its integrity can be verified using the checksums available in the
    Then follow these instructions.
    This will download a emu image and extract the needed files from it.
    
-3. From there, you need to build the lpunpack util and use that to extract the system.img
-   '''
-   . build/envsetup.sh
-	lunch android_${ASEMU_VERSION}-userdebug
-	mm lpunpack
-	mkdir vendor/google/emu-x86/temp/extracted/x86_64/system
-	out/host/linux-x86/bin/lpunpack vendor/google/emu-x86/temp/extracted/x86_64/system.img vendor/google/emu-x86/temp/extracted/x86_64/system
-	'''
+3. From there, you need to build the `lpunpack` util and use that to extract the system.img
+    ```
+    . build/envsetup.sh
+    lunch android_${ASEMU_VERSION}-userdebug
+    mm lpunpack
+    mkdir vendor/google/emu-x86/temp/extracted/x86_64/system
+    out/host/linux-x86/bin/lpunpack vendor/google/emu-x86/temp/extracted/x86_64/system.img vendor/google/emu-x86/temp/extracted/x86_64/system
+    ```
 
 4. Then you can mount the images from GUI, or from terminal
-	'''
+	```
 	gnome-disk-image-mounter vendor/google/emu-x86/temp/extracted/x86_64/system/system.img
 	gnome-disk-image-mounter vendor/google/emu-x86/temp/extracted/x86_64/system/product.img
 	gnome-disk-image-mounter vendor/google/emu-x86/temp/extracted/x86_64/system/system_ext.img
 	gnome-disk-image-mounter vendor/google/emu-x86/temp/extracted/x86_64/system/vendor.img
-	'''
+	```
 
 5. Now we can pull the files we need from the image with a script
 	For 64bit:
-	'''
+	```
 	./ext_emu_x86_64.sh
-	'''
+	```
 	or for 32bit: (currently not supported)
-	'''
+	```
 	./ext_emu_x86.sh
-	'''
+	```
 
 ### Make files
 `board` and `target` contain make files that can be used to bundle the
