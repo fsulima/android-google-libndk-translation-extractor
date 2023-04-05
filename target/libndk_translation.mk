@@ -34,5 +34,10 @@ PRODUCT_COPY_FILES += \
 
 endif
 
+# the latest android 11 system image 'system_ext' not exists
+SYSTEM_EXT_PATH := $(dir $(LOCAL_PATH))proprietary/system_ext
+
+ifneq ($(wildcard $(SYSTEM_EXT_PATH)),)
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(dir $(LOCAL_PATH))proprietary/system_ext,$(TARGET_COPY_OUT_SYSTEM)/system_ext) 
+    $(call find-copy-subdir-files,*,$(SYSTEM_EXT_PATH),$(TARGET_COPY_OUT_SYSTEM)/system_ext) 
+endif
